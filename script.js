@@ -171,15 +171,17 @@ closeModal.onclick = () => {
 window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
 
 const images = [
-  "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjQ5MDRqemlwbzd4Yzg1MDVhNHk1dHdkdHEyejVqOHdrMGwwMjUzbiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RPeh9zzA1IaTm/giphy.webp",
-  "https://media2.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aWE0ajZqMGE5aGp0bXU2azdvdG53ZXhqN3Y5cjBxaGM2bHRnNGkzayZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/tJcFFXgmBs27m/200.webp",
-  "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmdsZ29xdjBmN3gyczZ2ODV3bGw2aW9tN29mMXJrM3F1cnF1NHk1aSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/IzXiddo2twMmdmU8Lv/200.webp"
+  "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTg5bDZxNGVld2p1eGUxZTZhd3ZkdnVuOHhia285bWdqeGxsZG9lNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/sc54SIQ5QekyhMvat9/giphy.webp",
+  "https://media2.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3b3F6bHl2bjFhaHp1anFtNHQ0OThzNjJ6MHprMGptcmdvMnp0dW9oaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/GnBrnJv0uIchMKxx2r/giphy.webp",
+  "https://media3.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3a3Q0d3p1cDFsNDc4aDZmbWh5MzdyaHNiaGszcGlhbnAweGszMjJqdSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/B7fFLCRGrfVuWQim7R/giphy.webp"
 ];
 
 const shayaris = [
-  "तेरी बाहों में आकर सुकून मिल जाता है,<br>जैसे सारी थकान पल भर में उतर जाती है 🤍🫂",
-  "तू जब हग करता है ना,<br>तो दुनिया की हर फिक्र कहीं खो जाती है 💕🧸",
-  "हर झप्पी में तेरा अपनापन महसूस होता है,<br>शायद इसी को सच्चा प्यार कहते हैं 💞"
+  "Bhej rahi hoon ek pyara sa Teddy,<br>Jo hamesha rakhega tumhe Ready,<br>Jab bhi meri yaad aaye toh ise gale laga lena,<br>Mera har 'I Love You' iske zariye sun lena. 🧸🤍",
+  
+  "Tum mere sabse bade aur cute Teddy Bear ho,<br>Jiske paas hone se main sabse zyada safe feel karti hoon,<br>Bas hamesha mere saath aise hi rehna,<br>Happy Teddy Day My World! 💕🧸",
+  
+  "Log toh sirf aaj Teddy de rahe hain,<br>Par mere liye toh mera har din tumhare saath Teddy Day hai,<br>Kyuki tumhari baahon mein jo sukoon hai, wo kahi nahi.<br>Happy Teddy Day Jaan! 💞"
 ];
 
 hearts.forEach((card, index) => {
@@ -190,3 +192,4 @@ hearts.forEach((card, index) => {
     modal.style.display = 'flex';
   });
 });
+
