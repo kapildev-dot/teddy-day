@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>One Hug, One Teddy, One Heart 🤍🧸🫂</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Varela+Round&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Audio files -->
+<audio id="piano" loop preload="auto" src="ano-bg.mp3"></audio>
+<audio id="heartbeat" preload="auto" src="heartbeat.mp3"></audio>
+<audio id="voice" preload="auto" src="voice-note.mp3"></audio>
+
+<!-- SCREEN 1: Magical Entry – Sabse attractive -->
+<section id="screen1" class="screen active">
+  <div class="floating-elements"></div>
+  <div class="glow-bg"></div>
+
+  <h1 class="title-reveal">
+    Aaj Hug Day hai...<br>
+    <span class="special">par ye hug dil tak pahunchta hai 🤍🧸</span>
+  </h1>
+
+  <p class="teaser-reveal">
+    Phone ko dil se lagao... aur feel karo ek khas ehsaas 🫂💕
+  </p>
+
+  <!-- Invisible trigger for tap or auto -->
+  <div class="full-tap-trigger"></div>
+</section>
+
+<!-- SCREEN 2: Hug the Phone -->
+<section id="screen2" class="screen">
+  <div class="pulse-container">
+    <div class="pulse-heart big-pulse"></div>
+  </div>
+
+  <h2>Hug karo phone ko zor se 🫂<br>Aankhein band kar lo...</h2>
+
+  <p id="hugReveal" class="hidden-text">
+    Ye hug teddy ke saath hai... sirf tumhare liye banaya gaya 🧸💞
+  </p>
+</section>
+
+<!-- SCREEN 3: Teddy Comes Alive – Advanced GIF + Interactions -->
+<section id="screen3" class="screen">
+  <div id="teddyWrap">
+    <img 
+      src="https://media.tenor.com/NhawLnedTFEAAAAe/love-milk-and-mocha-bear.png" 
+      id="teddyGif" 
+      alt="Milk & Mocha Teddy Blushing with Hearts"
+    >
+    <div class="blush-glow"></div>
+    <div id="heartExplosion" class="explosion"></div>
+  </div>
+
+  <p class="teddy-msg">
+    Teddy tumhe dekh ke sharma raha hai 💕<br>
+    Touch karo ya dabao for special hug mode 🫂
+  </p>
+
+  <button id="voiceSurprise" class="voice-btn">🎧 Suno mera hug 🤍</button>
+  <p id="voiceMsg" class="hidden-text">Ye teddy aur ye hug... dono hamesha tumhare liye hain 🫂 Jab yaad aaye, bas yaad kar lena...</p>
+</section>
+
+<!-- SCREEN 4: Catch Game -->
+<section id="screen4" class="screen">
+  <h2>Catch The Teddy! 🎮 5 Seconds</h2>
+  <div id="gameZone">
+    <div id="movingTeddy">🧸</div>
+  </div>
+  <p id="gameMsg"></p>
+  <button id="toMemories">Memories Unlock Karo 💖</button>
+</section>
+
+<!-- SCREEN 5: Memories -->
+<section id="screen5" class="screen">
+  <h2 class="mem-title fade-in">Sirf tumhare liye ye memories 💞🤍</h2>
+
+  <div class="memory-hearts">
+
+    <div class="heart-card" data-index="0">
+      <div class="heart-inner">
+        <div class="heart-emoji">❤️</div>
+        <p class="shayari-preview">Pehla hug… yaad hai na?</p>
+        <span class="unlock-hint">Tap to unlock 💕</span>
+      </div>
+    </div>
+
+    <div class="heart-card" data-index="1">
+      <div class="heart-inner">
+        <div class="heart-emoji">🧸</div>
+        <p class="shayari-preview">Teddy day pe tumhari wo smile…</p>
+        <span class="unlock-hint">Tap to unlock 💕</span>
+      </div>
+    </div>
+
+    <div class="heart-card" data-index="2">
+      <div class="heart-inner">
+        <div class="heart-emoji">💍</div>
+        <p class="shayari-preview">Ye shuruaat hai… aakhri nahi</p>
+        <span class="unlock-hint">Tap to unlock 💕</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- Modal same rakh sakte ho, but shayari full show karega -->
+</section>
+<script src="script.js"></script>
+</body>
+</html>

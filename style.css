@@ -1,0 +1,505 @@
+:root {
+  --cream: #fffaf5;               /* soft cream bg start */
+  --blush: #ff9db5;               /* accent pink */
+  --main-pink: #ff5d8f;           /* tumhara favorite – sab text yahi */
+  --lavender: #e0d4f5;            /* gradient end */
+  --glow-pink: rgba(255, 93, 143, 0.75);   /* glow same pink tone */
+  --text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Varela Round', sans-serif;
+  background: linear-gradient(135deg, var(--cream) 0%, var(--lavender) 100%);
+  color: var(--main-pink);        /* default text color sab jagah */
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  touch-action: manipulation;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4vw 5vw;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+}
+
+.screen.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Headings – main-pink with stronger glow */
+h1, h2, .mem-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3rem, 12vw, 4.8rem);
+  color: var(--main-pink);
+  text-shadow: 0 0 20px var(--glow-pink), 0 0 35px rgba(255,93,143,0.6);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+/* Normal text & all paragraphs – same #ff5d8f */
+p, .teaser-reveal, .emotion-text, .teddy-msg, #gameMsg, .unlock-hint, .shayari-preview {
+  font-size: clamp(1.2rem, 5vw, 1.6rem);
+  color: var(--main-pink);
+  text-shadow: var(--text-shadow);
+  max-width: 90%;
+  line-height: 1.5;
+  margin: 1rem 0;
+}
+
+/* Button – pink theme consistent */
+button {
+  background: linear-gradient(45deg, var(--blush), var(--main-pink));
+  color: white;
+  border: none;
+  font-size: clamp(1.2rem, 5vw, 1.6rem);
+  padding: clamp(12px, 4vw, 16px) clamp(30px, 8vw, 40px);
+  border-radius: 50px;
+  margin: 1.5rem 0;
+  box-shadow: 0 10px 30px rgba(255,93,143,0.5);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.96) translateY(4px);
+  box-shadow: 0 6px 20px rgba(255,93,143,0.4);
+}
+
+/* Floating hearts/emojis – pink color */
+.floating-elements::before,
+.floating-elements::after {
+  color: var(--main-pink);
+  text-shadow: 0 0 12px var(--glow-pink);
+}
+
+/* Glow background */
+.glow-bg {
+  background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.45) 0%, transparent 65%);
+  animation: softBreathe 14s infinite alternate ease-in-out;
+}
+
+@keyframes softBreathe {
+  0% { opacity: 0.35; }
+  100% { opacity: 0.65; }
+}
+
+/* Screen 1 specific */
+.title-reveal {
+  animation: titleFade 4.5s forwards;
+  opacity: 0;
+}
+
+.special {
+  font-size: clamp(2.5rem, 9vw, 3.8rem);
+  display: block;
+  margin: 0.8rem 0;
+}
+
+@keyframes titleFade {
+  0% { opacity: 0; transform: translateY(50px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.teaser-reveal {
+  animation: fadeUp 3.5s forwards 1.8s;
+  opacity: 0;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Screen 2 Pulse – pink */
+.pulse-heart {
+  width: clamp(180px, 50vw, 240px);
+  height: clamp(180px, 50vw, 240px);
+  background: radial-gradient(circle, var(--main-pink) 25%, transparent 70%);
+  border-radius: 50%;
+  animation: heartbeatPulse 2.4s infinite ease-in-out;
+  opacity: 0.55;
+}
+
+@keyframes heartbeatPulse {
+  0%,100% { transform: scale(0.75); opacity: 0.35; }
+  50% { transform: scale(1.35); opacity: 0.75; }
+}
+
+/* Teddy section */
+#teddyWrap {
+  width: clamp(240px, 60vw, 320px);
+  height: clamp(280px, 70vw, 380px);
+  margin: 2rem 0;
+  animation: sway 8s infinite alternate ease-in-out;
+}
+
+@keyframes sway {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+#teddyGif {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 15px 40px rgba(255,93,143,0.45));
+  transition: transform 0.6s ease;
+}
+
+#teddyWrap:active #teddyGif {
+  transform: scale(1.18) translateY(-15px);
+}
+
+/* Game section */
+#gameZone {
+  width: clamp(280px, 80vw, 360px);
+  height: clamp(280px, 80vw, 360px);
+  background: rgba(255,255,255,0.25);
+  border-radius: 30px;
+  border: 2px dashed var(--main-pink);
+  position: relative;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+#movingTeddy {
+  position: absolute;
+  font-size: clamp(4rem, 15vw, 6rem);
+  cursor: pointer;
+  transition: all 0.7s;
+}
+
+
+/* unlock hint */
+.unlock-hint{
+  font-size: 0.75rem;
+  margin-top: 6px;
+  color: #ff5d8f;
+  opacity: 0.85;
+  letter-spacing: .3px;
+}
+
+/* Modal - Memory popup */
+#memoryModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  background: rgba(255, 250, 245, 0.96);
+  border-radius: 25px;
+  padding: clamp(15px, 5vw, 30px);
+  max-width: 90vw;
+  max-height: 85vh;
+  overflow-y: auto;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 60px rgba(255,105,180,0.7);
+  border: 2px solid var(--blush);
+  animation: modalPop 0.6s ease-out;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2.5rem;
+  color: var(--blush);
+  cursor: pointer;
+}
+
+#modalImage {
+  width: 90%;
+  height: auto;
+  max-height: 50vh;           /* screen ke hisab se limit */
+  object-fit: contain;        /* pura dikhega, crop nahi */
+  border-radius: 18px;
+  margin-bottom: 1.5rem;
+}
+
+#modalShayari {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  color: #ff69b4;
+  margin: 1rem 0;
+  line-height: 1.5;
+  -webkit-text-stroke: 0.8px var(--outline-black); /* dark outline */
+  text-stroke: 0.8px var(--outline-black);
+  text-shadow: 0 0 8px rgba(0,0,0,0.5);
+  padding: 0 10px;
+}
+
+/* Memories Screen Enhancements */
+.mem-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.8rem, 10vw, 4.2rem);
+  color: var(--blush);
+  text-shadow: 0 0 20px var(--glow-pink), 0 0 40px var(--glow-lav);
+  margin-bottom: 2.5rem;
+  animation: titleFade 3s forwards;
+  opacity: 0;
+}
+
+.memory-hearts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.heart-card {
+  width: clamp(220px, 45vw, 280px);
+  height: clamp(280px, 55vw, 360px);
+  background: linear-gradient(135deg, rgba(255,157,181,0.4), rgba(224,212,245,0.3));
+  border: 3px solid var(--blush);
+  border-radius: 40% 40% 50% 50% / 60% 60% 40% 40%;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 15px 40px rgba(255,105,180,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.heart-card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 25px 60px rgba(255,105,180,0.5);
+}
+
+.heart-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.5) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+
+.heart-card:hover .heart-glow,
+.heart-card.unlocked .heart-glow {
+  opacity: 0.7;
+}
+
+.heart-emoji {
+  font-size: 5rem;
+  margin: 1rem 0;
+  animation: gentlePulse 3s infinite alternate;
+}
+
+.shayari-preview {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  color: #e20808d5;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5);
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 1rem;
+}
+
+.unlock-hint {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-top: 1rem;
+}
+
+/* Unlock animation */
+.heart-card.unlocked {
+  animation: unlockBeat 1.5s ease;
+  border-color: #7e0742;
+}
+
+@keyframes unlockBeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1.05); }
+}
+
+/* Modal update (shayari dark outline) */
+#modalShayari {
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  color: #ff69b4;
+  -webkit-text-stroke: 1px #000;
+  text-stroke: 1px #000;
+  text-shadow: 0 0 12px rgba(0,0,0,0.4);
+  line-height: 1.5;
+}
+/* Responsive adjustments */
+/* ============================= */
+/* 📱 FINAL MOBILE FRIENDLY CSS */
+/* ============================= */
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* iPhone notch safe-area */
+body {
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+}
+
+/* ---------- SMALL MOBILES (≤360px) ---------- */
+@media (max-width: 360px) {
+
+  h1, h2, .mem-title {
+    font-size: 2.4rem;
+    line-height: 1.15;
+  }
+
+  p, .shayari-preview {
+    font-size: 1.05rem;
+    line-height: 1.4;
+    max-width: 95%;
+  }
+
+  button {
+    font-size: 1.1rem;
+    padding: 12px 26px;
+  }
+
+  .heart-card {
+    width: 92%;
+    height: auto;
+    padding: 1.2rem 1rem;
+    border-radius: 38% 38% 48% 48% / 60% 60% 40% 40%;
+  }
+
+  .heart-emoji {
+    font-size: 3.6rem;
+  }
+
+  .unlock-hint {
+    font-size: 0.75rem;
+  }
+}
+
+/* ---------- NORMAL MOBILES (361px – 480px) ---------- */
+@media (max-width: 480px) {
+
+  .screen {
+    justify-content: flex-start;
+    padding-top: 12vh;
+    padding-bottom: 10vh;
+  }
+
+  .memory-hearts {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .heart-card {
+    width: 88%;
+    max-width: 340px;
+    height: auto;
+    padding: 1.5rem 1.2rem;
+  }
+
+  .shayari-preview {
+    font-size: 1.35rem;
+    line-height: 1.45;
+  }
+
+  .heart-emoji {
+    font-size: 4.2rem;
+  }
+}
+
+/* ---------- TOUCH DEVICES (no hover) ---------- */
+@media (hover: none) {
+
+  .heart-card:hover {
+    transform: none;
+    box-shadow: 0 15px 40px rgba(255,105,180,0.3);
+  }
+
+  .heart-card:active {
+    transform: scale(0.96);
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
+}
+
+/* ---------- MODAL MOBILE FIX ---------- */
+@media (max-width: 500px) {
+
+  .modal-content {
+    width: 92vw;
+    max-height: 90vh;
+    padding: 1.2rem;
+    border-radius: 22px;
+  }
+
+  #modalImage {
+    max-height: 45vh;
+    width: 100%;
+  }
+
+  #modalShayari {
+    font-size: 1.9rem;
+    line-height: 1.5;
+    padding: 0 8px;
+  }
+
+  .close-modal {
+    font-size: 2rem;
+    top: 8px;
+    right: 12px;
+  }
+}
+
+/* ---------- EXTRA SMOOTH MOBILE FEEL ---------- */
+@media (max-width: 600px) {
+
+  .screen {
+    transition: opacity 0.8s ease;
+  }
+
+  .heart-card {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  #teddyWrap,
+  #movingTeddy {
+    touch-action: manipulation;
+  }
+}
