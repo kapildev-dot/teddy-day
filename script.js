@@ -1,10 +1,24 @@
-const screens = document.querySelectorAll('.screen');
+function startFallingHearts() {
+  const container = document.getElementById('heartsContainer');
+  if(!container) return;
+
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.className = 'falling-heart';
+    heart.innerHTML = ['❤️', '💖', '🧸', '🤍'][Math.floor(Math.random() * 4)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    heart.style.fontSize = (Math.random() * 1 + 1) + 'rem';
+    container.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+  }, 400);
+}const screens = document.querySelectorAll('.screen');
 let current = 1;
 
 function nextScreen() {
-  screens[current-1].classList.remove('active');
+  screens[current - 1].classList.remove('active');
   current++;
-  setTimeout(() => screens[current-1].classList.add('active'), 900);
+  setTimeout(() => screens[current - 1].classList.add('active'), 900);
 }
 
 // Piano soft start on load
@@ -12,7 +26,7 @@ window.addEventListener('load', () => {
   const piano = document.getElementById('piano');
   piano.volume = 0.35;
   piano.play().catch(() => console.log("Piano needs interaction"));
-  
+
   // Preload heartbeat for better mobile play
   const heartbeat = document.getElementById('heartbeat');
   heartbeat.load();
@@ -77,23 +91,31 @@ teddyWrap.addEventListener('touchend', () => {
   }, 1800);
 });
 
-// Voice Surprise Button – Hug ki awaaz (heartbeat loud on click)
+// Voice Surprise Button – 2 sec wait ke baad heartbeat bajegi
 document.getElementById('voiceSurprise').addEventListener('click', () => {
+  // Text reveal turant
   document.getElementById('voiceMsg').classList.add('reveal');
 
-  const heartbeat = document.getElementById('heartbeat');
-  heartbeat.volume = 0.9;
-  heartbeat.currentTime = 0;
-  heartbeat.play().catch(err => console.log("Heartbeat play failed:", err));
-
-  if (navigator.vibrate) {
-    navigator.vibrate([300, 200, 400, 200, 500]);
-  }
-
+  // 2 seconds wait ke baad heartbeat start
   setTimeout(() => {
-    heartbeat.pause();
+    const heartbeat = document.getElementById('heartbeat');
+    heartbeat.volume = 0.9;           // loud feel
     heartbeat.currentTime = 0;
-  }, 7000);
+    heartbeat.play().catch(err => {
+      console.log("Heartbeat play failed:", err);
+    });
+
+    // Vibration – hug feel ke liye
+    if (navigator.vibrate) {
+      navigator.vibrate([300, 200, 400, 200, 500]);
+    }
+
+    // 7 seconds baad sound stop
+    setTimeout(() => {
+      heartbeat.pause();
+      heartbeat.currentTime = 0;
+    }, 9000);
+  }, 500); // 2 seconds hold/wait – phir ek dum bajegi
 });
 
 // Game logic
@@ -142,13 +164,16 @@ modal.innerHTML = `
 document.body.appendChild(modal);
 
 const closeModal = modal.querySelector('.close-modal');
-closeModal.onclick = () => modal.style.display = 'none';
+closeModal.onclick = () => {
+  modal.style.display = 'none';
+  document.getElementById('modalImage').src = ""; // Clear image on close
+};
 window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
 
 const images = [
   "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjQ5MDRqemlwbzd4Yzg1MDVhNHk1dHdkdHEyejVqOHdrMGwwMjUzbiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RPeh9zzA1IaTm/giphy.webp",
   "https://media2.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aWE0ajZqMGE5aGp0bXU2azdvdG53ZXhqN3Y5cjBxaGM2bHRnNGkzayZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/tJcFFXgmBs27m/200.webp",
-  "https://media0.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NGwwMXZkOW1udGhycHU1bnJ4OGttcDR5dndjZGE5ZDFiOGJ0Y2M4ayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tAHMAsbksrEGPGGQei/giphy.webp"
+  "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmdsZ29xdjBmN3gyczZ2ODV3bGw2aW9tN29mMXJrM3F1cnF1NHk1aSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/IzXiddo2twMmdmU8Lv/200.webp"
 ];
 
 const shayaris = [
