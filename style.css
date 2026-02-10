@@ -176,96 +176,118 @@ button:active {
   box-shadow: inset 0 0 15px rgba(255, 93, 143, 0.1);
 }
 
-/* Teddy Styling - Bada aur clickable */
+/* =========================================
+   6. GAME ZONE - TEDDY STYLING
+   ========================================= */
 #movingTeddy {
   position: absolute;
-  font-size: 3.5rem; /* Bada size taaki asani se dikhe */
+  font-size: 3.5rem;
   cursor: pointer;
   user-select: none;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 10;
-  width: 60px;
-  height: 60px;
+  width: 70px; /* Thoda bada box */
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  touch-action: none; /* Mobile touch conflict fix */
+  touch-action: none;
 }
 
 /* =========================================
-   7. MEMORIES GRID - MOBILE OPTIMIZED
+   7. MEMORIES GRID - IMAGE FIX
    ========================================= */
 .memory-hearts {
   display: flex;
-  flex-direction: column; /* Mobile par stack honge */
+  flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.5rem;
   width: 100%;
-  padding: 10px 0 50px 0; /* Extra space niche scroll ke liye */
+  padding: 20px 0 80px 0;
 }
 
 .heart-card {
   width: 85vw;
-  max-width: 300px;
-  min-height: 200px; /* Height auto/flexible rakhi hai */
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
+  max-width: 320px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
   border: 2px solid var(--blush);
   border-radius: 25px;
   padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.3s;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+  text-align: center;
+  overflow: hidden; /* Bahar nikalne se rokta hai */
+  box-shadow: 0 10px 25px rgba(255, 157, 181, 0.2);
 }
 
 .heart-emoji {
-  font-size: 3rem;
+  font-size: 3.5rem;
   margin-bottom: 10px;
 }
 
 .shayari-preview {
   font-family: 'Great Vibes', cursive;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--main-pink);
-  margin-bottom: 8px;
-}
-
-.unlock-hint {
-  font-size: 0.75rem;
-  opacity: 0.8;
-  letter-spacing: 1px;
+  margin: 10px 0;
 }
 
 /* =========================================
-   8. MODAL FIX
+   8. MODAL FIX (Popup Image Sahi Karne Ke Liye)
    ========================================= */
-   #memoryModal {
-  display: none; /* Ye line zaroori hai taki modal shuru me na dikhe */
+#memoryModal {
+  display: none; 
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
   z-index: 2000;
   place-items: center;
   padding: 20px;
 }
+
 .modal-content {
   background: var(--cream);
   width: 90vw;
-  max-width: 400px;
-  border-radius: 25px;
-  padding: 20px;
+  max-width: 380px;
+  border-radius: 30px;
+  padding: 15px;
   position: relative;
   text-align: center;
-  box-shadow: 0 0 30px var(--glow-pink);
-  animation: modalPop 0.3s ease-out;
+  box-shadow: 0 0 40px var(--glow-pink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#modalImage {
+  width: 100%;       /* Box ki poori chaudai */
+  height: auto;
+  max-height: 250px; /* Mobile par screen se bahar nahi jayegi */
+  object-fit: cover; /* Image ko box ke andar fit karega */
+  border-radius: 20px;
+  border: 3px solid var(--blush);
+  margin-bottom: 15px;
+}
+
+#modalShayari {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: var(--main-pink);
+  margin-top: 10px;
+  line-height: 1.3;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2.5rem;
+  color: var(--main-pink);
+  cursor: pointer;
+  z-index: 2001;
 }
 
 @keyframes modalPop {
